@@ -1,56 +1,26 @@
-import { Image, StyleSheet, TextInput,Text } from 'react-native';
+import {StyleSheet} from 'react-native';
 import AppScrollView from '@/components/AppScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
 import { useState } from 'react';
+import { TranslationBoxes } from '@/components/TranslationBoxes';
 
-export default function HomeScreen() {
-  const [text, onChangeText] = useState('Useless Text');
+export default function TranslatorScreen() {
+  const [text, onChangeText] = useState('Write here...');
   return (
     <AppScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-      </ThemedView>
+      headerBackgroundColor={{ light: '#e3f5ff', dark: '#1D3D47' }}
+     >
+      <TranslationBoxes onChangeText={onChangeText} text={text} languaje={'Inglés'} viewBackgroundColor={{
+        dark: '#1D3D47',
+        light: '#e3f5ff'
+      }}/>
+      <TranslationBoxes onChangeText={onChangeText} text={text} languaje={'Español'} viewBackgroundColor={{
+        dark: '#1D3D47',
+        light: '#e3f5ff'
+      }}/>
       
-      <TextInput
-          style={styles.input}
-          onChangeText={onChangeText}
-          value={text}
-        />
-
-        <Text>{text}</Text>
     </AppScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
-  },
-  input: {
-    height: 40,
-    margin: 12,
-    borderWidth: 1,
-    padding: 10,
-  },
 });
